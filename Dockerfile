@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage:bionic-1.0.0
 MAINTAINER BirgerK <birger.kamp@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -19,9 +19,9 @@ RUN apt-get -y update && \
     add-apt-repository ppa:certbot/certbot && \
     apt-get -y update && \
     apt-get install -q -y python-certbot-apache && \
+	apt-get install -y libapache2-mod-auth-openidc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 # configure apache
 ADD config/mods-available/proxy_html.conf /etc/apache2/mods-available/
 ADD config/conf-available/security.conf /etc/apache2/conf-available/

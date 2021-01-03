@@ -1,0 +1,6 @@
+.env
+.project
+.settings/
+distrib/
+vendor/
+docker-compose.override.yml
